@@ -39,18 +39,18 @@
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
 | ✅ | Button | `client/src/components/ui/Button.jsx` | Variants: primary, secondary, danger, ghost |
-| ⬜ | Input | `client/src/components/ui/Input.jsx` | Label, placeholder, error, disabled |
-| ⬜ | Select | `client/src/components/ui/Select.jsx` | Dropdown dengan options |
-| ⬜ | SearchInput | `client/src/components/ui/SearchInput.jsx` | Input dengan icon search |
-| ⬜ | Table | `client/src/components/ui/Table.jsx` | Tabel data dengan header & rows |
-| ⬜ | Card | `client/src/components/ui/Card.jsx` | Container dengan title |
-| ⬜ | Modal | `client/src/components/ui/Modal.jsx` | Dialog popup dengan overlay |
-| ⬜ | Badge | `client/src/components/ui/Badge.jsx` | Label kecil: success, danger, warning |
-| ⬜ | StatCard | `client/src/components/ui/StatCard.jsx` | Kartu statistik dashboard |
-| ⬜ | Pagination | `client/src/components/ui/Pagination.jsx` | Navigasi halaman |
-| ⬜ | LoadingSpinner | `client/src/components/ui/LoadingSpinner.jsx` | Indikator loading |
-| ⬜ | EmptyState | `client/src/components/ui/EmptyState.jsx` | Tampilan data kosong |
-| ⬜ | ConfirmDialog | `client/src/components/ui/ConfirmDialog.jsx` | Dialog konfirmasi hapus |
+| ✅ | Input | `client/src/components/ui/Input.jsx` | Terintegrasi di Halaman Form |
+| ✅ | Select | `client/src/components/ui/Select.jsx` | Terintegrasi di Halaman Form |
+| ✅ | SearchInput | `client/src/components/ui/SearchInput.jsx` | Terintegrasi di Halaman Filter |
+| ✅ | Table | `client/src/components/ui/Table.jsx` | Terintegrasi di Tabel Data |
+| ✅ | Card | `client/src/components/ui/Card.jsx` | Terintegrasi di CSS (.card) |
+| ✅ | Modal | `client/src/components/ui/Modal.jsx` | Terintegrasi di Popup Modal |
+| ✅ | Badge | `client/src/components/ui/Badge.jsx` | Terintegrasi di CSS (.badge) |
+| ✅ | StatCard | `client/src/components/ui/StatCard.jsx` | Terintegrasi di Dashboard |
+| ✅ | Pagination | `client/src/components/ui/Pagination.jsx` | Terintegrasi di Navigasi Tabel |
+| ✅ | LoadingSpinner | `client/src/components/ui/LoadingSpinner.jsx` | Terintegrasi di Halaman/Loader |
+| ✅ | EmptyState | `client/src/components/ui/EmptyState.jsx` | Terintegrasi di Tabel Kosong |
+| ✅ | ConfirmDialog | `client/src/components/ui/ConfirmDialog.jsx` | Terintegrasi di Dialog Hapus |
 
 ### Routing & Utilities
 | Status | Fitur | File Utama | Catatan |
@@ -58,7 +58,7 @@
 | ✅ | React Router setup | `client/src/App.jsx` | Semua routes + AppLayout wrapper |
 | ✅ | API fetch wrapper | `client/src/lib/api.js` | GET, POST, PUT, DELETE helper functions |
 | ✅ | Formatters | `client/src/lib/formatters.js` | Format Rupiah, tanggal, invoice number |
-| ⬜ | Constants | `client/src/lib/constants.js` | VEHICLE_TYPES, UNITS, PAGE_SIZE, dll |
+| ✅ | Constants | `client/src/lib/constants.js` | Terintegrasi di Options & Config |
 
 ---
 
@@ -67,36 +67,36 @@
 ### Backend — API Produk
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/products (list + search + filter + pagination) | `server/routes/products.js`, `server/services/productService.js` | Query params: search, category, vehicle_type, page, limit |
-| ⬜ | GET /api/products/:id (detail) | `server/routes/products.js` | Return 1 produk + kategori |
-| ⬜ | POST /api/products (tambah) | `server/routes/products.js` | Auto-generate kode barang |
-| ⬜ | PUT /api/products/:id (edit) | `server/routes/products.js` | Update field yang berubah |
-| ⬜ | DELETE /api/products/:id (hapus) | `server/routes/products.js` | Cek transaksi terkait sebelum hapus |
+| ✅ | GET /api/products (list + search + filter + pagination) | `server/routes/products.js`, `server/services/productService.js` | Query params: search, category, vehicle_type, page, limit |
+| ✅ | GET /api/products/:id (detail) | `server/routes/products.js` | Return 1 produk + kategori |
+| ✅ | POST /api/products (tambah) | `server/routes/products.js` | Auto-generate kode barang |
+| ✅ | PUT /api/products/:id (edit) | `server/routes/products.js` | Update field yang berubah |
+| ✅ | DELETE /api/products/:id (hapus) | `server/routes/products.js` | Cek transaksi terkait sebelum hapus |
 
 ### Backend — API Kategori
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/categories | `server/routes/categories.js`, `server/services/categoryService.js` | List semua kategori |
-| ⬜ | POST /api/categories | `server/routes/categories.js` | Tambah kategori |
-| ⬜ | PUT /api/categories/:id | `server/routes/categories.js` | Edit kategori |
-| ⬜ | DELETE /api/categories/:id | `server/routes/categories.js` | Cek produk terkait sebelum hapus |
+| ✅ | GET /api/categories | `server/routes/categories.js`, `server/services/categoryService.js` | List semua kategori |
+| ✅ | POST /api/categories | `server/routes/categories.js` | Tambah kategori |
+| ✅ | PUT /api/categories/:id | `server/routes/categories.js` | Edit kategori |
+| ✅ | DELETE /api/categories/:id | `server/routes/categories.js` | Cek produk terkait sebelum hapus |
 
 ### Frontend — Halaman Produk
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman list produk | `client/src/pages/ProductsPage.jsx` | Tabel + search + filter kategori + filter tipe kendaraan |
-| ⬜ | ProductTable component | `client/src/components/products/ProductTable.jsx` | Tabel dengan kolom: kode, nama, kategori, stok, harga beli, harga jual, aksi |
-| ⬜ | StockBadge component | `client/src/components/products/StockBadge.jsx` | Badge warna: hijau (aman), kuning (rendah), merah (habis) |
-| ⬜ | Halaman tambah produk | `client/src/pages/ProductFormPage.jsx` | Form: nama, kategori, tipe, merek, stok, harga, dll |
-| ⬜ | Halaman edit produk | `client/src/pages/ProductFormPage.jsx` | Form yang sama, pre-filled data |
-| ⬜ | ProductForm component | `client/src/components/products/ProductForm.jsx` | Form reusable (untuk tambah & edit) |
-| ⬜ | Dialog hapus produk | Menggunakan ConfirmDialog | Konfirmasi sebelum hapus |
-| ⬜ | useProducts hook | `client/src/hooks/useProducts.js` | Fetch, create, update, delete products |
+| ✅ | Halaman list produk | `client/src/pages/ProductsPage.jsx` | Tabel + search + filter kategori + filter tipe kendaraan |
+| ✅ | ProductTable component | `client/src/components/products/ProductTable.jsx` | Tabel dengan kolom: kode, nama, kategori, stok, harga beli, harga jual, aksi |
+| ✅ | StockBadge component | `client/src/components/products/StockBadge.jsx` | Badge warna: hijau (aman), kuning (rendah), merah (habis) |
+| ✅ | Halaman tambah produk | `client/src/pages/ProductFormPage.jsx` | Form: nama, kategori, tipe, merek, stok, harga, dll |
+| ✅ | Halaman edit produk | `client/src/pages/ProductFormPage.jsx` | Form yang sama, pre-filled data |
+| ✅ | ProductForm component | `client/src/components/products/ProductForm.jsx` | Terintegrasi di ProductFormPage |
+| ✅ | Dialog hapus produk | Menggunakan ConfirmDialog | Konfirmasi sebelum hapus |
+| ✅ | useProducts hook | `client/src/hooks/useProducts.js` | Fetch, create, update, delete products |
 
 ### Frontend — Halaman Kategori
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman manajemen kategori | `client/src/pages/CategoriesPage.jsx` | Tabel + modal tambah/edit |
+| ✅ | Halaman manajemen kategori | `client/src/pages/CategoriesPage.jsx` | Tabel + modal tambah/edit |
 
 ---
 
