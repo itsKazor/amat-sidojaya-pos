@@ -11,3 +11,4 @@ data/*.db-journal
 data/*.db-wal
 .DS_Store
 .gemini/
+.ai-instructions/

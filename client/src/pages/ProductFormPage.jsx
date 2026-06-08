@@ -73,6 +73,7 @@ export default function ProductFormPage() {
     }
     if (sellingPrice < purchasePrice) {
       setError('Harga jual disarankan tidak kurang dari harga beli');
+      return;
     }
 
     setLoading(true);

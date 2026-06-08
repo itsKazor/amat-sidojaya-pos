@@ -4,7 +4,32 @@ import useReports from '../hooks/useReports.js';
 import useStock from '../hooks/useStock.js';
 import { formatRupiah } from '../lib/formatters.js';
 import Button from '../components/ui/Button.jsx';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
+
 import { 
   DollarSign, 
   ShoppingCart, 

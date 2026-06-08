@@ -308,7 +308,7 @@ export default function StockPage() {
                             Jumlah Perubahan: <strong style={{ color: isIncrease ? 'var(--success)' : 'var(--danger)' }}>{mv.quantity > 0 ? `+${mv.quantity}` : mv.quantity}</strong> | Saldo Akhir: <strong>{mv.stockAfter}</strong>
                           </p>
                           {mv.notes && (
-                            <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-muted)', italic: 'true' }}>
+                            <p style={{ fontSize: 'var(--font-size-xs)', color: 'var(--text-muted)', fontStyle: 'italic' }}>
                               * {mv.notes}
                             </p>
                           )}

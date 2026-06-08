@@ -196,7 +196,7 @@ router.get('/top-products', async (req, res) => {
     .from(transactionItems)
     .leftJoin(transactions, eq(transactionItems.transactionId, transactions.id))
     .leftJoin(products, eq(transactionItems.productId, products.id))
-    .where(and(eq(transactions.type, 'sale')))
+    .where(dateCondition ? and(eq(transactions.type, 'sale'), dateCondition) : eq(transactions.type, 'sale'))
     .groupBy(products.id)
     .orderBy(desc(sql`SUM(${transactionItems.quantity})`))
     .limit(parseInt(limit));

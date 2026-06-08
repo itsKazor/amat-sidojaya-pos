@@ -280,7 +280,7 @@ export default function ReportsPage() {
                 <tbody>
                   {dailyData.transactions.length === 0 ? (
                     <tr>
-                      <td colSpan="6" style={{ textAlignment: 'center', color: 'var(--text-secondary)' }}>Tidak ada transaksi hari ini.</td>
+                      <td colSpan="6" style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>Tidak ada transaksi hari ini.</td>
                     </tr>
                   ) : (
                     dailyData.transactions.map(t => (
@@ -431,7 +431,7 @@ export default function ReportsPage() {
                   <tbody>
                     {topProductsData.length === 0 ? (
                       <tr>
-                        <td colSpan="4" style={{ textAlignment: 'center', color: 'var(--text-secondary)' }}>Tidak ada data terlaris.</td>
+                        <td colSpan="4" style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>Tidak ada data terlaris.</td>
                       </tr>
                     ) : (
                       topProductsData.map((p, idx) => (

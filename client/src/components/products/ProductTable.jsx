@@ -6,7 +6,7 @@ import StockBadge from './StockBadge.jsx';
 export default function ProductTable({ products, onEdit, onDelete }) {
   if (products.length === 0) {
     return (
-      <div className="table-empty-state" style={{ padding: 'var(--spacing-xl)', textAlignment: 'center', color: 'var(--text-secondary)' }}>
+      <div className="table-empty-state" style={{ padding: 'var(--spacing-xl)', textAlign: 'center', color: 'var(--text-secondary)' }}>
         <p>Tidak ada produk ditemukan. Silakan tambahkan produk baru.</p>
       </div>
     );

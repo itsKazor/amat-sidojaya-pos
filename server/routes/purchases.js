@@ -6,7 +6,7 @@ import { eq, and, gte, lte, desc, count, sql, like } from 'drizzle-orm';
 const router = express.Router();
 
 // Helper to generate Purchase Invoice Number (PUR-YYYYMMDD-XXX)
-const generatePurchaseInvoiceNumber = async () => {
+const generatePurchaseInvoiceNumber = async (tx) => {
   const now = new Date();
   const wibTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
   const year = wibTime.getUTCFullYear();
@@ -16,7 +16,8 @@ const generatePurchaseInvoiceNumber = async () => {
 
   const prefix = `PUR-${dateStr}-`;
   
-  const list = await db.select({ invoiceNumber: transactions.invoiceNumber })
+  // Uses tx (transaction object) to prevent race conditions
+  const list = await tx.select({ invoiceNumber: transactions.invoiceNumber })
     .from(transactions)
     .where(and(eq(transactions.type, 'purchase'), like(transactions.invoiceNumber, `${prefix}%`)));
   
@@ -121,7 +122,7 @@ router.post('/', async (req, res) => {
       }
 
       // 2. Generate Invoice Number
-      const invoiceNumber = await generatePurchaseInvoiceNumber();
+      const invoiceNumber = await generatePurchaseInvoiceNumber(tx);
       const transactionDate = new Date().toISOString();
 
       // 3. Insert transaction header (profit is 0 for purchase)

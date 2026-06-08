@@ -6,7 +6,7 @@ import { eq, and, gte, lte, desc, count, sql, like } from 'drizzle-orm';
 const router = express.Router();
 
 // Helper to generate Invoice Number (INV-YYYYMMDD-XXX)
-const generateInvoiceNumber = async () => {
+const generateInvoiceNumber = async (tx) => {
   // Get date in YYYYMMDD format (using WIB timezone: UTC+7)
   const now = new Date();
   const wibTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
@@ -18,7 +18,8 @@ const generateInvoiceNumber = async () => {
   const prefix = `INV-${dateStr}-`;
   
   // Find transactions of type 'sale' with invoice starting with prefix
-  const list = await db.select({ invoiceNumber: transactions.invoiceNumber })
+  // Uses tx (transaction object) to prevent race conditions
+  const list = await tx.select({ invoiceNumber: transactions.invoiceNumber })
     .from(transactions)
     .where(and(eq(transactions.type, 'sale'), like(transactions.invoiceNumber, `${prefix}%`)));
   
@@ -177,7 +178,7 @@ router.post('/', async (req, res) => {
       }
 
       // 2. Generate Invoice Number
-      const invoiceNumber = await generateInvoiceNumber();
+      const invoiceNumber = await generateInvoiceNumber(tx);
       const transactionDate = new Date().toISOString();
 
       // 3. Insert transaction header

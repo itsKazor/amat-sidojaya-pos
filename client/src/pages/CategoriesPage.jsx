@@ -106,7 +106,7 @@ export default function CategoriesPage() {
             <tbody>
               {categories.length === 0 ? (
                 <tr>
-                  <td colSpan="4" style={{ textAlignment: 'center', color: 'var(--text-secondary)' }}>
+                  <td colSpan="4" style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
                     Belum ada kategori data.
                   </td>
                 </tr>
