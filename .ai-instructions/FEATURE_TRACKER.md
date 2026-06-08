@@ -105,21 +105,21 @@
 ### Backend — API Penjualan
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/transactions (riwayat penjualan) | `server/routes/transactions.js`, `server/services/transactionService.js` | Filter: from, to, page, limit |
-| ⬜ | GET /api/transactions/:id (detail) | `server/routes/transactions.js` | Return transaksi + items + info produk |
-| ⬜ | POST /api/transactions (buat penjualan) | `server/routes/transactions.js` | Generate invoice, hitung profit, update stok, catat stock_movements |
+| ✅ | GET /api/transactions (riwayat penjualan) | `server/routes/transactions.js`, `server/services/transactionService.js` | Filter: from, to, page, limit |
+| ✅ | GET /api/transactions/:id (detail) | `server/routes/transactions.js` | Return transaksi + items + info produk |
+| ✅ | POST /api/transactions (buat penjualan) | `server/routes/transactions.js` | Generate invoice, hitung profit, update stok, catat stock_movements |
 
 ### Frontend — POS / Kasir
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman kasir baru | `client/src/pages/NewSalePage.jsx` | Layout: kiri (search barang) + kanan (keranjang) |
-| ⬜ | POSForm component | `client/src/components/transactions/POSForm.jsx` | Search barang + daftar hasil pencarian |
-| ⬜ | CartPanel component | `client/src/components/transactions/CartPanel.jsx` | Daftar item di keranjang + total + tombol checkout |
-| ⬜ | InvoicePrint component | `client/src/components/transactions/InvoicePrint.jsx` | Template nota untuk dicetak |
-| ⬜ | Halaman riwayat penjualan | `client/src/pages/SalesPage.jsx` | Tabel riwayat + filter tanggal |
-| ⬜ | TransactionTable component | `client/src/components/transactions/TransactionTable.jsx` | Tabel: invoice, tanggal, pelanggan, total, profit |
-| ⬜ | Detail transaksi (modal/page) | Klik row di tabel → lihat detail items | Tampilkan items + cetak ulang nota |
-| ⬜ | useTransactions hook | `client/src/hooks/useTransactions.js` | Fetch, create transactions |
+| ✅ | Halaman kasir baru | `client/src/pages/NewSalePage.jsx` | Layout: kiri (search barang) + kanan (keranjang) |
+| ✅ | POSForm component | `client/src/components/transactions/POSForm.jsx` | Terintegrasi di NewSalePage |
+| ✅ | CartPanel component | `client/src/components/transactions/CartPanel.jsx` | Terintegrasi di NewSalePage |
+| ✅ | InvoicePrint component | `client/src/components/transactions/InvoicePrint.jsx` | Template nota untuk dicetak |
+| ✅ | Halaman riwayat penjualan | `client/src/pages/SalesPage.jsx` | Tabel riwayat + filter tanggal |
+| ✅ | TransactionTable component | `client/src/components/transactions/TransactionTable.jsx` | Terintegrasi di SalesPage |
+| ✅ | Detail transaksi (modal/page) | Klik row di tabel → lihat detail items | Tampilkan items + cetak ulang nota |
+| ✅ | useTransactions hook | `client/src/hooks/useTransactions.js` | Fetch, create transactions |
 
 ---
 
