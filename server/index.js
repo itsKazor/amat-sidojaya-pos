@@ -10,6 +10,7 @@ import categoryRouter from './routes/categories.js';
 import productRouter from './routes/products.js';
 import transactionRouter from './routes/transactions.js';
 import purchaseRouter from './routes/purchases.js';
+import reportRouter from './routes/reports.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,7 @@ app.use('/api/categories', categoryRouter);
 app.use('/api/products', productRouter);
 app.use('/api/transactions', transactionRouter);
 app.use('/api/purchases', purchaseRouter);
+app.use('/api/reports', reportRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

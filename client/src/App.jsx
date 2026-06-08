@@ -8,6 +8,7 @@ import NewSalePage from './pages/NewSalePage.jsx';
 import SalesPage from './pages/SalesPage.jsx';
 import NewPurchasePage from './pages/NewPurchasePage.jsx';
 import PurchasesPage from './pages/PurchasesPage.jsx';
+import ReportsPage from './pages/ReportsPage.jsx';
 
 // Placeholder views for remaining modules
 const Dashboard = () => (
@@ -15,15 +16,6 @@ const Dashboard = () => (
     <h2 className="card-title">🏠 Dashboard</h2>
     <p style={{ color: 'var(--text-secondary)' }}>
       Selamat datang di Sistem Manajemen Bisnis Amat Sidojaya. Silakan navigasikan menu untuk mengelola bisnis.
-    </p>
-  </div>
-);
-
-const Reports = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">📈 Laporan Keuangan</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Laporan penjualan harian, bulanan, laba rugi, dan produk terlaris dengan grafik visual terintegrasi.
     </p>
   </div>
 );
@@ -50,7 +42,7 @@ export default function App() {
         <Route path="sales/new" element={<NewSalePage />} />
         <Route path="purchases" element={<PurchasesPage />} />
         <Route path="purchases/new" element={<NewPurchasePage />} />
-        <Route path="reports" element={<Reports />} />
+        <Route path="reports" element={<ReportsPage />} />
         <Route path="stock" element={<Stock />} />
         <Route path="*" element={
           <div className="card animate-fade-in">
