@@ -4,6 +4,8 @@ import AppLayout from './components/layout/AppLayout.jsx';
 import ProductsPage from './pages/ProductsPage.jsx';
 import ProductFormPage from './pages/ProductFormPage.jsx';
 import CategoriesPage from './pages/CategoriesPage.jsx';
+import NewSalePage from './pages/NewSalePage.jsx';
+import SalesPage from './pages/SalesPage.jsx';
 
 // Placeholder views for remaining modules
 const Dashboard = () => (
@@ -11,24 +13,6 @@ const Dashboard = () => (
     <h2 className="card-title">🏠 Dashboard</h2>
     <p style={{ color: 'var(--text-secondary)' }}>
       Selamat datang di Sistem Manajemen Bisnis Amat Sidojaya. Silakan navigasikan menu untuk mengelola bisnis.
-    </p>
-  </div>
-);
-
-const Sales = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">🛒 Riwayat Penjualan</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Melihat semua nota penjualan digital yang pernah diproses.
-    </p>
-  </div>
-);
-
-const NewSale = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">➕ Transaksi Kasir POS</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Modul kasir / Point of Sale untuk mencatat transaksi penjualan barang.
     </p>
   </div>
 );
@@ -78,8 +62,8 @@ export default function App() {
         <Route path="products/new" element={<ProductFormPage />} />
         <Route path="products/edit/:id" element={<ProductFormPage />} />
         <Route path="categories" element={<CategoriesPage />} />
-        <Route path="sales" element={<Sales />} />
-        <Route path="sales/new" element={<NewSale />} />
+        <Route path="sales" element={<SalesPage />} />
+        <Route path="sales/new" element={<NewSalePage />} />
         <Route path="purchases" element={<Purchases />} />
         <Route path="purchases/new" element={<NewPurchase />} />
         <Route path="reports" element={<Reports />} />
