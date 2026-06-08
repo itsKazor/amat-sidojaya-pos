@@ -144,20 +144,20 @@
 ### Backend — API Laporan
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/reports/daily (laporan harian) | `server/routes/reports.js`, `server/services/reportService.js` | Param: date |
-| ⬜ | GET /api/reports/monthly (laporan bulanan) | `server/routes/reports.js` | Param: month |
-| ⬜ | GET /api/reports/profit (laba rugi) | `server/routes/reports.js` | Param: from, to |
-| ⬜ | GET /api/reports/top-products (produk terlaris) | `server/routes/reports.js` | Param: period, limit |
+| ✅ | GET /api/reports/daily (laporan harian) | `server/routes/reports.js`, `server/services/reportService.js` | Param: date |
+| ✅ | GET /api/reports/monthly (laporan bulanan) | `server/routes/reports.js` | Param: month |
+| ✅ | GET /api/reports/profit (laba rugi) | `server/routes/reports.js` | Param: from, to |
+| ✅ | GET /api/reports/top-products (produk terlaris) | `server/routes/reports.js` | Param: period, limit |
 
 ### Frontend — Halaman Laporan
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman laporan utama | `client/src/pages/ReportsPage.jsx` | Tab/section: harian, bulanan, laba rugi, produk terlaris |
-| ⬜ | SalesChart component | `client/src/components/reports/SalesChart.jsx` | Grafik garis penjualan (Chart.js) |
-| ⬜ | ProfitChart component | `client/src/components/reports/ProfitChart.jsx` | Grafik batang profit (Chart.js) |
-| ⬜ | ReportTable component | `client/src/components/reports/ReportTable.jsx` | Tabel ringkasan laporan |
-| ⬜ | useReports hook | `client/src/hooks/useReports.js` | Fetch data laporan |
-| ⬜ | Cetak/export laporan | Di ReportsPage | window.print() dengan @media print CSS |
+| ✅ | Halaman laporan utama | `client/src/pages/ReportsPage.jsx` | Tab/section: harian, bulanan, laba rugi, produk terlaris |
+| ✅ | SalesChart component | `client/src/components/reports/SalesChart.jsx` | Terintegrasi di ReportsPage |
+| ✅ | ProfitChart component | `client/src/components/reports/ProfitChart.jsx` | Terintegrasi di ReportsPage |
+| ✅ | ReportTable component | `client/src/components/reports/ReportTable.jsx` | Terintegrasi di ReportsPage |
+| ✅ | useReports hook | `client/src/hooks/useReports.js` | Fetch data laporan |
+| ✅ | Cetak/export laporan | Di ReportsPage | window.print() dengan @media print CSS |
 
 ---
 
