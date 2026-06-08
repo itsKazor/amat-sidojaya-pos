@@ -1,0 +1,40 @@
+.header {
+  height: 70px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.header-title h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  background-color: var(--bg-tertiary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.meta-item svg {
+  color: var(--accent-primary);
+}

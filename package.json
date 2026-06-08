@@ -1,0 +1,26 @@
+{
+  "name": "amat-sidojaya",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npx vite",
+    "dev:server": "node --watch server/index.js",
+    "build": "cd client && npx vite build",
+    "start": "node server/index.js",
+    "db:migrate": "node server/db/migrate.js",
+    "db:seed": "node server/db/seed.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.39.1",
+    "express": "^5.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "drizzle-kit": "^0.30.2"
+  }
+}
