@@ -166,36 +166,36 @@
 ### Backend — API Stok
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/stock (overview semua stok) | `server/routes/stock.js`, `server/services/stockService.js` | Semua produk + status stok |
-| ⬜ | GET /api/stock/low (barang stok rendah) | `server/routes/stock.js` | Produk dengan stok ≤ min_stock |
-| ⬜ | GET /api/stock/movements/:productId | `server/routes/stock.js` | Riwayat pergerakan stok 1 produk |
-| ⬜ | POST /api/stock/adjustment (stok opname) | `server/routes/stock.js` | Penyesuaian manual + catat stock_movements |
+| ✅ | GET /api/stock (overview semua stok) | `server/routes/stock.js`, `server/services/stockService.js` | Semua produk + status stok |
+| ✅ | GET /api/stock/low (barang stok rendah) | `server/routes/stock.js` | Produk dengan stok ≤ min_stock |
+| ✅ | GET /api/stock/movements/:productId | `server/routes/stock.js` | Riwayat pergerakan stok 1 produk |
+| ✅ | POST /api/stock/adjustment (stok opname) | `server/routes/stock.js` | Penyesuaian manual + catat stock_movements |
 
 ### Frontend — Halaman Stok
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman stok overview | `client/src/pages/StockPage.jsx` | Tabel semua barang + status + filter stok rendah |
-| ⬜ | Riwayat pergerakan stok | Di StockPage (modal/expand) | Timeline masuk/keluar/adjustment |
-| ⬜ | Form stok opname | Di StockPage | Pilih produk → isi stok aktual → simpan |
+| ✅ | Halaman stok overview | `client/src/pages/StockPage.jsx` | Tabel semua barang + status + filter stok rendah |
+| ✅ | Riwayat pergerakan stok | Di StockPage (modal/expand) | Timeline masuk/keluar/adjustment |
+| ✅ | Form stok opname | Di StockPage | Pilih produk → isi stok aktual → simpan |
 
 ### Frontend — Dashboard
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman dashboard | `client/src/pages/DashboardPage.jsx` | 4 stat cards + grafik + top produk + alert stok |
-| ⬜ | DailyStats component | `client/src/components/dashboard/DailyStats.jsx` | 4 kartu: omset, profit, jumlah transaksi, items terjual |
-| ⬜ | TopProducts component | `client/src/components/dashboard/TopProducts.jsx` | Daftar 10 produk terlaris |
-| ⬜ | LowStockAlert component | `client/src/components/dashboard/LowStockAlert.jsx` | Daftar barang stok rendah/habis |
-| ⬜ | Grafik tren penjualan 7 hari | Di DashboardPage | Chart.js line chart |
-| ⬜ | Grafik profit bulanan | Di DashboardPage | Chart.js bar chart |
+| ✅ | Halaman dashboard | `client/src/pages/DashboardPage.jsx` | 4 stat cards + grafik + top produk + alert stok |
+| ✅ | DailyStats component | `client/src/components/dashboard/DailyStats.jsx` | Terintegrasi di DashboardPage |
+| ✅ | TopProducts component | `client/src/components/dashboard/TopProducts.jsx` | Terintegrasi di DashboardPage |
+| ✅ | LowStockAlert component | `client/src/components/dashboard/LowStockAlert.jsx` | Terintegrasi di DashboardPage |
+| ✅ | Grafik tren penjualan 7 hari | Di DashboardPage | Chart.js line chart |
+| ✅ | Grafik profit bulanan | Di DashboardPage | Chart.js bar chart |
 
 ### Polish & Final
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Responsive design (tablet/mobile) | `client/src/index.css` | Media queries |
-| ⬜ | Micro-animations & transitions | `client/src/index.css` | Hover, focus, page transition |
-| ⬜ | Error handling UI | Semua halaman | Toast notification atau alert |
-| ⬜ | Loading states | Semua halaman | Skeleton atau spinner saat fetch data |
-| ⬜ | Empty states | Semua halaman | Pesan & ilustrasi saat data kosong |
+| ✅ | Responsive design (tablet/mobile) | `client/src/index.css` | Media queries |
+| ✅ | Micro-animations & transitions | `client/src/index.css` | Hover, focus, page transition |
+| ✅ | Error handling UI | Semua halaman | Toast notification atau alert |
+| ✅ | Loading states | Semua halaman | Skeleton atau spinner saat fetch data |
+| ✅ | Empty states | Semua halaman | Pesan & ilustrasi saat data kosong |
 
 ---
 
