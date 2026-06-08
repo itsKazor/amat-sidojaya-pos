@@ -1,31 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout.jsx';
+import ProductsPage from './pages/ProductsPage.jsx';
+import ProductFormPage from './pages/ProductFormPage.jsx';
+import CategoriesPage from './pages/CategoriesPage.jsx';
 
-// Beautiful placeholder pages for Fase 1
+// Placeholder views for remaining modules
 const Dashboard = () => (
   <div className="card animate-fade-in">
     <h2 className="card-title">🏠 Dashboard</h2>
     <p style={{ color: 'var(--text-secondary)' }}>
       Selamat datang di Sistem Manajemen Bisnis Amat Sidojaya. Silakan navigasikan menu untuk mengelola bisnis.
-    </p>
-  </div>
-);
-
-const Products = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">📦 Daftar Produk</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Modul manajemen produk sparepart. Fitur pencarian, filter, tambah, edit, dan hapus barang akan diaktifkan pada Fase 2.
-    </p>
-  </div>
-);
-
-const Categories = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">📁 Kategori Produk</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Modul manajemen kategori barang. Anda bisa membagi sparepart menjadi beberapa kategori (contoh: Ban, Oli, Aki).
     </p>
   </div>
 );
@@ -89,8 +74,10 @@ export default function App() {
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Dashboard />} />
-        <Route path="products" element={<Products />} />
-        <Route path="categories" element={<Categories />} />
+        <Route path="products" element={<ProductsPage />} />
+        <Route path="products/new" element={<ProductFormPage />} />
+        <Route path="products/edit/:id" element={<ProductFormPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
         <Route path="sales" element={<Sales />} />
         <Route path="sales/new" element={<NewSale />} />
         <Route path="purchases" element={<Purchases />} />
