@@ -128,14 +128,14 @@
 ### Backend — API Pembelian
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | GET /api/purchases (riwayat pembelian) | `server/routes/purchases.js`, `server/services/purchaseService.js` | Filter: from, to |
-| ⬜ | POST /api/purchases (buat pembelian) | `server/routes/purchases.js` | Update stok masuk, update harga beli, catat stock_movements |
+| ✅ | GET /api/purchases (riwayat pembelian) | `server/routes/purchases.js`, `server/services/purchaseService.js` | Filter: from, to |
+| ✅ | POST /api/purchases (buat pembelian) | `server/routes/purchases.js` | Update stok masuk, update harga beli, catat stock_movements |
 
 ### Frontend — Halaman Pembelian
 | Status | Fitur | File Utama | Catatan |
 |--------|-------|------------|---------|
-| ⬜ | Halaman pembelian baru | `client/src/pages/NewPurchasePage.jsx` | Form: pilih barang, jumlah, harga beli, supplier |
-| ⬜ | Halaman riwayat pembelian | `client/src/pages/PurchasesPage.jsx` | Tabel riwayat pembelian |
+| ✅ | Halaman pembelian baru | `client/src/pages/NewPurchasePage.jsx` | Form: pilih barang, jumlah, harga beli, supplier |
+| ✅ | Halaman riwayat pembelian | `client/src/pages/PurchasesPage.jsx` | Tabel riwayat pembelian |
 
 ---
 
