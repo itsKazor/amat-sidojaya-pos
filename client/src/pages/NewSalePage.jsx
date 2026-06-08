@@ -15,24 +15,29 @@ export default function NewSalePage() {
   const [customerName, setCustomerName] = useState('');
   const [notes, setNotes] = useState('');
 
-  // Search products state
+  // Search & Category states
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [categoriesList, setCategoriesList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Success transaction state for printing
   const [completedTxn, setCompletedTxn] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
-  // Fetch products matching search term
-  const searchProducts = useCallback(async (term) => {
-    if (!term.trim()) {
-      setSearchResults([]);
-      return;
-    }
+  // Fetch products matching category and search term
+  const fetchProducts = useCallback(async (catId, term) => {
     setSearchLoading(true);
     try {
-      const res = await api.get(`/api/products?search=${term}&limit=8`);
+      let url = `/api/products?limit=80`;
+      if (catId && catId !== 'all') {
+        url += `&category=${catId}`;
+      }
+      if (term.trim()) {
+        url += `&search=${encodeURIComponent(term)}`;
+      }
+      const res = await api.get(url);
       if (res.success) {
         setSearchResults(res.data);
       }
@@ -43,13 +48,28 @@ export default function NewSalePage() {
     }
   }, []);
 
-  // Debounce search
+  // Fetch categories on mount
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const res = await api.get('/api/categories');
+        if (res.success) {
+          setCategoriesList(res.data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    loadCategories();
+  }, []);
+
+  // Fetch products when selectedCategory or search changes
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
-      searchProducts(search);
+      fetchProducts(selectedCategory, search);
     }, 300);
     return () => clearTimeout(delayDebounce);
-  }, [search, searchProducts]);
+  }, [selectedCategory, search, fetchProducts]);
 
   const addToCart = (product) => {
     setErrorMsg('');
@@ -150,6 +170,7 @@ export default function NewSalePage() {
     setCustomerName('');
     setNotes('');
     setSearch('');
+    setSelectedCategory('all');
     setCompletedTxn(null);
     setErrorMsg('');
   };
@@ -193,45 +214,82 @@ export default function NewSalePage() {
 
       {/* Left panel: Search & Add Products */}
       <div className="pos-left-panel card">
-        <h3 className="card-title"><ShoppingCart size={20} /> Pilih Sparepart</h3>
+        <h3 className="card-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <ShoppingCart size={20} /> Pilih Sparepart
+        </h3>
         
-        <div className="search-box" style={{ marginBottom: 'var(--spacing-lg)' }}>
+        <div className="search-box" style={{ marginBottom: 'var(--spacing-md)' }}>
           <Search className="search-icon" size={18} />
           <input 
             type="text" 
             value={search} 
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Ketik nama sparepart / kode barang..."
+            placeholder="Cari sparepart berdasarkan nama, kode, atau brand..."
             className="filter-input-search"
           />
         </div>
 
-        {searchLoading && <p style={{ color: 'var(--text-secondary)' }}>Mencari produk...</p>}
+        {/* Category Tabs */}
+        <div className="pos-categories-tabs">
+          <button 
+            type="button" 
+            className={`pos-category-tab ${selectedCategory === 'all' ? 'active' : ''}`}
+            onClick={() => setSelectedCategory('all')}
+          >
+            Semua
+          </button>
+          {categoriesList.map(cat => (
+            <button 
+              key={cat.id}
+              type="button" 
+              className={`pos-category-tab ${selectedCategory === cat.id ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat.id)}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
 
-        <div className="search-results-list">
-          {searchResults.length === 0 && search.trim() !== '' && !searchLoading && (
-            <p style={{ color: 'var(--text-muted)' }}>Produk tidak ditemukan.</p>
+        {searchLoading && <p style={{ color: 'var(--text-secondary)', margin: 'var(--spacing-md) 0' }}>Memuat produk...</p>}
+
+        <div className="products-grid-container">
+          {searchResults.length === 0 && !searchLoading && (
+            <div style={{ textAlign: 'center', padding: 'var(--spacing-xl) 0', color: 'var(--text-muted)' }}>
+              Produk tidak ditemukan dalam kategori ini.
+            </div>
           )}
           
-          {searchResults.length === 0 && search.trim() === '' && (
-            <p style={{ color: 'var(--text-muted)' }}>Silakan ketik kata kunci untuk mencari barang.</p>
-          )}
-
-          {searchResults.map(p => (
-            <div key={p.id} className="product-search-item" onClick={() => addToCart(p)}>
-              <div className="product-search-info">
-                <span className="product-search-code">{p.code}</span>
-                <span className="product-search-name">{p.name}</span>
-                <span className="product-search-meta">{p.brand || 'No Brand'} • Rak: {p.location || '-'}</span>
-              </div>
-              <div className="product-search-action" style={{ textAlign: 'right' }}>
-                <div className="product-search-price">{formatRupiah(p.sellingPrice)}</div>
-                <div className={`product-search-stock ${p.stock <= p.minStock ? 'low-stock' : ''}`}>
-                  Stok: {p.stock} {p.unit}
+          <div className="products-grid">
+            {searchResults.map(p => {
+              const isLowStock = p.stock <= p.minStock;
+              const isOutOfStock = p.stock <= 0;
+              return (
+                <div 
+                  key={p.id} 
+                  className={`product-grid-card ${isOutOfStock ? 'out-of-stock' : ''} ${isLowStock ? 'low-stock-card' : ''}`} 
+                  onClick={() => addToCart(p)}
+                >
+                  <div className="product-card-header">
+                    <span className="product-card-code">{p.code}</span>
+                    <span className="product-card-location" title="Lokasi Rak">{p.location || '-'}</span>
+                  </div>
+                  
+                  <div className="product-card-body">
+                    <span className="product-card-brand">{p.brand || 'No Brand'}</span>
+                    <h4 className="product-card-name" title={p.name}>{p.name}</h4>
+                    <span className="product-card-vehicle">{p.vehicleType ? p.vehicleType.toUpperCase() : 'UNIVERSAL'}</span>
+                  </div>
+                  
+                  <div className="product-card-footer">
+                    <span className="product-card-price">{formatRupiah(p.sellingPrice)}</span>
+                    <span className={`product-card-stock ${isOutOfStock ? 'out' : isLowStock ? 'low' : 'ok'}`}>
+                      {isOutOfStock ? 'Habis' : `${p.stock} ${p.unit}`}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
 
