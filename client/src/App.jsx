@@ -6,6 +6,8 @@ import ProductFormPage from './pages/ProductFormPage.jsx';
 import CategoriesPage from './pages/CategoriesPage.jsx';
 import NewSalePage from './pages/NewSalePage.jsx';
 import SalesPage from './pages/SalesPage.jsx';
+import NewPurchasePage from './pages/NewPurchasePage.jsx';
+import PurchasesPage from './pages/PurchasesPage.jsx';
 
 // Placeholder views for remaining modules
 const Dashboard = () => (
@@ -13,24 +15,6 @@ const Dashboard = () => (
     <h2 className="card-title">🏠 Dashboard</h2>
     <p style={{ color: 'var(--text-secondary)' }}>
       Selamat datang di Sistem Manajemen Bisnis Amat Sidojaya. Silakan navigasikan menu untuk mengelola bisnis.
-    </p>
-  </div>
-);
-
-const Purchases = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">📥 Riwayat Pembelian</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Melihat riwayat transaksi pembelian stok barang dari supplier.
-    </p>
-  </div>
-);
-
-const NewPurchase = () => (
-  <div className="card animate-fade-in">
-    <h2 className="card-title">➕ Input Pembelian Baru</h2>
-    <p style={{ color: 'var(--text-secondary)' }}>
-      Mencatat restok barang yang baru dibeli dari supplier.
     </p>
   </div>
 );
@@ -64,8 +48,8 @@ export default function App() {
         <Route path="categories" element={<CategoriesPage />} />
         <Route path="sales" element={<SalesPage />} />
         <Route path="sales/new" element={<NewSalePage />} />
-        <Route path="purchases" element={<Purchases />} />
-        <Route path="purchases/new" element={<NewPurchase />} />
+        <Route path="purchases" element={<PurchasesPage />} />
+        <Route path="purchases/new" element={<NewPurchasePage />} />
         <Route path="reports" element={<Reports />} />
         <Route path="stock" element={<Stock />} />
         <Route path="*" element={

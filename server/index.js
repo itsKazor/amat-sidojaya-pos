@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 import categoryRouter from './routes/categories.js';
 import productRouter from './routes/products.js';
 import transactionRouter from './routes/transactions.js';
+import purchaseRouter from './routes/purchases.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use('/api/categories', categoryRouter);
 app.use('/api/products', productRouter);
 app.use('/api/transactions', transactionRouter);
+app.use('/api/purchases', purchaseRouter);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
